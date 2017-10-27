@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<block>
+  <name>PAM Slicer</name>
+  <key>thesis_pam_slicer_fb</key>
+  <category>[Thesis]</category>
+  <import>import thesis</import>
+  <make>thesis.pam_slicer_fb(slice_levels=$slice_levels, dibits=$dibits)</make>
+  <param>
+    <name>Slice Levels</name>
+    <key>slice_levels</key>
+    <value>[-2, 0, 2]</value>
+    <type>real_vector</type>
+  </param>
+  <param>
+    <name>Dibits</name>
+    <key>dibits</key>
+    <value>[-3, -1, 1, 3]</value>
+    <type>int_vector</type>
+  </param>
+
+  <sink>
+    <name>4PAM Symbols</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>Dibits</name>
+    <type>byte</type>
+  </source>
+</block>

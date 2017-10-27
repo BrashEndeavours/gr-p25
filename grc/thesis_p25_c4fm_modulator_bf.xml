@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<block>
+  <name>P25 C4FM Modulator</name>
+  <key>thesis_p25_c4fm_modulator_bf</key>
+  <category>[Thesis]</category>
+  <import>import thesis</import>
+  <make>thesis.p25_c4fm_modulator_bf(
+    filter_gain=$filter_gain,
+    dibit_map=$dibit_map,
+    sample_rate=$sample_rate,
+    symbol_rate=$symbol_rate,
+    span=$span,
+    verbose=$verbose,
+    log=$log
+  )</make>
+
+  <param>
+    <name>Sample Rate</name>
+    <key>sample_rate</key>
+    <value>48000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Symbol Rate</name>
+    <key>symbol_rate</key>
+    <value>4800</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Dibit Mapping</name>
+    <key>dibit_map</key>
+    <value>[1.0/3.0, 1.0, -(1.0/3.0), -1.0]</value>
+    <type>real_vector</type>
+  </param>
+
+  <param>
+    <name>Filter Gain</name>
+    <key>filter_gain</key>
+    <value>1.0</value>
+    <type>real</type>
+  </param>
+
+  <param>
+    <name>Filter Symbol Span</name>
+    <key>span</key>
+    <value>11</value>
+    <type>int</type>
+  </param>
+
+  <param>
+		<name>Verbose</name>
+		<key>verbose</key>
+		<value>False</value>
+		<type>bool</type>
+		<hide>#if str($verbose) == 'False' then 'part' else 'none'#</hide>
+		<option>
+			<name>On</name>
+			<key>True</key>
+		</option>
+		<option>
+			<name>Off</name>
+			<key>False</key>
+		</option>
+	</param>
+
+  <param>
+		<name>Log</name>
+		<key>log</key>
+		<value>False</value>
+		<type>bool</type>
+		<hide>#if str($log) == 'False' then 'part' else 'none'#</hide>
+		<option>
+			<name>On</name>
+			<key>True</key>
+		</option>
+		<option>
+			<name>Off</name>
+			<key>False</key>
+		</option>
+	</param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

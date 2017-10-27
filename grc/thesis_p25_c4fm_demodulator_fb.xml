@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<block>
+  <name>P25 C4FM Demodulator</name>
+  <key>thesis_p25_c4fm_demodulator_fb</key>
+  <category>[Thesis]</category>
+  <import>import thesis</import>
+  <make>thesis.p25_c4fm_demodulator_fb(
+    filter_gain=$filter_gain,
+    dibits=$dibits,
+    sample_rate=$sample_rate,
+    symbol_rate=$symbol_rate,
+    span=$span,
+    verbose=$verbose,
+    log=$log
+  )</make>
+
+  <param>
+    <name>Filter Gain</name>
+    <key>filter_gain</key>
+    <value>1.0</value>
+    <type>real</type>
+  </param>
+
+  <param>
+    <name>Filter Symbol Span</name>
+    <key>span</key>
+    <value>11</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Sample Rate</name>
+    <key>sample_rate</key>
+    <value>48000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Symbol Rate</name>
+    <key>symbol_rate</key>
+    <value>4800</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Slice Levels</name>
+    <key>slice_levels</key>
+    <value>[-2, 0, 2]</value>
+    <type>real_vector</type>
+  </param>
+
+  <param>
+    <name>Dibits</name>
+    <key>dibits</key>
+    <value>[3, 2, 0, 1]</value>
+    <type>int_vector</type>
+  </param>
+
+  <param>
+		<name>Verbose</name>
+		<key>verbose</key>
+		<value>False</value>
+		<type>bool</type>
+		<hide>#if str($verbose) == 'False' then 'part' else 'none'#</hide>
+		<option>
+			<name>On</name>
+			<key>True</key>
+		</option>
+		<option>
+			<name>Off</name>
+			<key>False</key>
+		</option>
+	</param>
+
+  <param>
+		<name>Log</name>
+		<key>log</key>
+		<value>False</value>
+		<type>bool</type>
+		<hide>#if str($log) == 'False' then 'part' else 'none'#</hide>
+		<option>
+			<name>On</name>
+			<key>True</key>
+		</option>
+		<option>
+			<name>Off</name>
+			<key>False</key>
+		</option>
+	</param>
+
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>
