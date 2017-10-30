@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<block>
+  <name>Dibit Mapper</name>
+  <key>p25_dibit_mapper_bf</key>
+  <category>[Thesis]/P25</category>
+
+  <import>import p25
+import logging</import>
+
+  <make>p25.dibit_mapper_bf(
+    dibit_map=$dibit_map,
+    log_level=$log_level,
+    filename=$filename
+  )</make>
+
+  <callback></callback>
+
+  <param>
+    <name>Dibit Mapping</name>
+    <key>dibit_map</key>
+    <value>[1, 3, -1, -3]</value>
+    <type>real_vector</type>
+  </param>
+
+
+  <param>
+		<name>Logging Level</name>
+		<key>log_level</key>
+    <value>logging.NOTSET</value>
+		<type>int</type>
+		<hide>#if str($log_level) == 'logging.NOTSET' then 'part' else 'none'#</hide>
+		<option>
+			<name>Disable</name>
+			<key>logging.NOTSET</key>
+		</option>
+		<option>
+			<name>Debug</name>
+			<key>logging.DEBUG</key>
+		</option>
+		<option>
+			<name>Informational</name>
+			<key>logging.INFO</key>
+		</option>
+		<option>
+			<name>Warning</name>
+			<key>logging.WARNING</key>
+		</option>
+		<option>
+			<name>Error</name>
+			<key>logging.ERROR</key>
+		</option>
+		<option>
+			<name>Critical</name>
+			<key>logging.CRITICAL</key>
+		</option>
+	</param>
+
+  <param>
+    <name>Logfile</name>
+    <key>filename</key>
+    <value></value>
+    <type>file_save</type>
+    <hide>#if str($log_level) == 'logging.NOTSET' then 'part' else 'none'#</hide>
+  </param>
+
+  <sink>
+    <name>in</name>
+    <type>byte</type>
+  </sink>
+
+  <source>
+    <name>out</name>
+    <type>float</type>
+  </source>
+</block>

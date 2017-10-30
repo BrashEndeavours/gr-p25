@@ -20,10 +20,10 @@
 ########################################################################
 # Check if there is C++ code at all
 ########################################################################
-if(NOT thesis_sources)
+if(NOT p25_sources)
 	MESSAGE(STATUS "No C++ sources... skipping swig/")
 	return()
-endif(NOT thesis_sources)
+endif(NOT p25_sources)
 
 ########################################################################
 # Include swig generation macros
@@ -43,23 +43,23 @@ foreach(incdir ${GNURADIO_RUNTIME_INCLUDE_DIRS})
     list(APPEND GR_SWIG_INCLUDE_DIRS ${incdir}/gnuradio/swig)
 endforeach(incdir)
 
-set(GR_SWIG_LIBRARIES gnuradio-thesis)
-set(GR_SWIG_DOC_FILE ${CMAKE_CURRENT_BINARY_DIR}/thesis_swig_doc.i)
+set(GR_SWIG_LIBRARIES gnuradio-p25)
+set(GR_SWIG_DOC_FILE ${CMAKE_CURRENT_BINARY_DIR}/p25_swig_doc.i)
 set(GR_SWIG_DOC_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/../include)
 
-GR_SWIG_MAKE(thesis_swig thesis_swig.i)
+GR_SWIG_MAKE(p25_swig p25_swig.i)
 
 ########################################################################
 # Install the build swig module
 ########################################################################
-GR_SWIG_INSTALL(TARGETS thesis_swig DESTINATION ${GR_PYTHON_DIR}/thesis)
+GR_SWIG_INSTALL(TARGETS p25_swig DESTINATION ${GR_PYTHON_DIR}/p25)
 
 ########################################################################
 # Install swig .i files for development
 ########################################################################
 install(
     FILES
-    thesis_swig.i
-    ${CMAKE_CURRENT_BINARY_DIR}/thesis_swig_doc.i
-    DESTINATION ${GR_INCLUDE_DIR}/thesis/swig
+    p25_swig.i
+    ${CMAKE_CURRENT_BINARY_DIR}/p25_swig_doc.i
+    DESTINATION ${GR_INCLUDE_DIR}/p25/swig
 )

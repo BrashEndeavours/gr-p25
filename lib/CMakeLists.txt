@@ -25,24 +25,21 @@ include(GrPlatform) #define LIB_SUFFIX
 include_directories(${Boost_INCLUDE_DIR})
 link_directories(${Boost_LIBRARY_DIRS})
 
-list(APPEND thesis_sources
-    fourpam_demod_ff_impl.cc
-    pam_slicer_fb_impl.cc
-    blanker_ff_impl.cc
+list(APPEND p25_sources
 )
 
-set(thesis_sources "${thesis_sources}" PARENT_SCOPE)
-if(NOT thesis_sources)
+set(p25_sources "${p25_sources}" PARENT_SCOPE)
+if(NOT p25_sources)
 	MESSAGE(STATUS "No C++ sources... skipping lib/")
 	return()
-endif(NOT thesis_sources)
+endif(NOT p25_sources)
 
-add_library(gnuradio-thesis SHARED ${thesis_sources})
-target_link_libraries(gnuradio-thesis ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
-set_target_properties(gnuradio-thesis PROPERTIES DEFINE_SYMBOL "gnuradio_thesis_EXPORTS")
+add_library(gnuradio-p25 SHARED ${p25_sources})
+target_link_libraries(gnuradio-p25 ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+set_target_properties(gnuradio-p25 PROPERTIES DEFINE_SYMBOL "gnuradio_p25_EXPORTS")
 
 if(APPLE)
-    set_target_properties(gnuradio-thesis PROPERTIES
+    set_target_properties(gnuradio-p25 PROPERTIES
         INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib"
     )
 endif(APPLE)
@@ -51,7 +48,7 @@ endif(APPLE)
 # Install built library files
 ########################################################################
 include(GrMiscUtils)
-GR_LIBRARY_FOO(gnuradio-thesis RUNTIME_COMPONENT "thesis_runtime" DEVEL_COMPONENT "thesis_devel")
+GR_LIBRARY_FOO(gnuradio-p25 RUNTIME_COMPONENT "p25_runtime" DEVEL_COMPONENT "p25_devel")
 
 ########################################################################
 # Build and register unit test
@@ -60,25 +57,26 @@ include(GrTest)
 
 include_directories(${CPPUNIT_INCLUDE_DIRS})
 
-list(APPEND test_thesis_sources
-    ${CMAKE_CURRENT_SOURCE_DIR}/test_thesis.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/qa_thesis.cc
+list(APPEND test_p25_sources
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_p25.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/qa_p25.cc
 )
 
-add_executable(test-thesis ${test_thesis_sources})
+add_executable(test-p25 ${test_p25_sources})
 
 target_link_libraries(
-  test-thesis
+  test-p25
   ${GNURADIO_RUNTIME_LIBRARIES}
   ${Boost_LIBRARIES}
   ${CPPUNIT_LIBRARIES}
-  gnuradio-thesis
+  gnuradio-p25
 )
 
-GR_ADD_TEST(test_thesis test-thesis)
+GR_ADD_TEST(test_p25 test-p25)
 
 ########################################################################
 # Print summary
 ########################################################################
 message(STATUS "Using install prefix: ${CMAKE_INSTALL_PREFIX}")
 message(STATUS "Building for version: ${VERSION} / ${LIBVER}")
+
