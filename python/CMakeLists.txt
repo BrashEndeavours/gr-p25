@@ -32,7 +32,11 @@ GR_PYTHON_INSTALL(
     FILES
     __init__.py
     dibit_mapper_bf.py
-    p25_utils.py DESTINATION ${GR_PYTHON_DIR}/p25
+    p25_utils.py
+    rx_shaping_filter_ff.py
+    tx_shaping_filter_ff.py
+    rx_nyquist_filter_ff.py
+    tx_nyquist_filter_ff.py DESTINATION ${GR_PYTHON_DIR}/p25
 )
 
 ########################################################################
@@ -43,3 +47,7 @@ include(GrTest)
 set(GR_TEST_TARGET_DEPS gnuradio-p25)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
 GR_ADD_TEST(qa_dibit_mapper_bf ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_dibit_mapper_bf.py)
+GR_ADD_TEST(qa_rx_shaping_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_rx_shaping_filter_ff.py)
+GR_ADD_TEST(qa_tx_shaping_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_tx_shaping_filter_ff.py)
+GR_ADD_TEST(qa_rx_nyquist_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_rx_nyquist_filter_ff.py)
+GR_ADD_TEST(qa_tx_nyquist_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_tx_nyquist_filter_ff.py)

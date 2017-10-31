@@ -18,5 +18,9 @@
 # Boston, MA 02110-1301, USA.
 
 install(FILES
-    p25_dibit_mapper_bf.xml DESTINATION share/gnuradio/grc/blocks
+    p25_dibit_mapper_bf.xml
+    p25_rx_shaping_filter_ff.xml
+    p25_tx_shaping_filter_ff.xml
+    p25_rx_nyquist_filter_ff.xml
+    p25_tx_nyquist_filter_ff.xml DESTINATION share/gnuradio/grc/blocks
 )

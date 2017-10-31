@@ -32,4 +32,8 @@ except ImportError:
 
 # import any pure python here
 from dibit_mapper_bf import dibit_mapper_bf
+from rx_shaping_filter_ff import rx_shaping_filter_ff
+from tx_shaping_filter_ff import tx_shaping_filter_ff
+from rx_nyquist_filter_ff import rx_nyquist_filter_ff
+from tx_nyquist_filter_ff import tx_nyquist_filter_ff
 #
