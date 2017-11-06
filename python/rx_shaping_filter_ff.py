@@ -51,7 +51,7 @@ class rx_shaping_filter_ff(gr.hier_block2):
             gr.io_signature(1, 1, gr.sizeof_float),  # Input signature
             gr.io_signature(1, 1, gr.sizeof_float))  # Output signature
 
-		# Determine Interpolation factors.
+		# Determine Interpolation factor.
         lcm = gru.lcm(self.sample_rate, self.symbol_rate)
         self.interpolation = int(lcm // self.sample_rate)
 

@@ -57,7 +57,7 @@ class tx_nyquist_filter_ff(gr.hier_block2):
 
         # Create Nyquist Raised Cosine filter.
         self.nyquist_filter = filter.interp_fir_filter_fff(self.interpolation,
-                generate_taps(filter_gain=self.filter_gain* (self.sample_rate / self.symbol_rate),
+                generate_taps(filter_gain=self.filter_gain * self.interpolation,
                               sample_rate=self.sample_rate,
                               symbol_rate=self.symbol_rate,
                               span=self.span,

@@ -36,4 +36,9 @@ from rx_shaping_filter_ff import rx_shaping_filter_ff
 from tx_shaping_filter_ff import tx_shaping_filter_ff
 from rx_nyquist_filter_ff import rx_nyquist_filter_ff
 from tx_nyquist_filter_ff import tx_nyquist_filter_ff
+from freq_mod_fc import freq_mod_fc
+from freq_demod_cf import freq_demod_cf
+from c4fm_modulator_bf import c4fm_modulator_bf
+from c4fm_demodulator_fb import c4fm_demodulator_fb
+from c4fm_demodulator_fixed_fb import c4fm_demodulator_fixed_fb
 #

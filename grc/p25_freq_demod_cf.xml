@@ -1,44 +1,50 @@
 <?xml version="1.0"?>
 <block>
-  <name>P25 TX Nyquist Filter</name>
-  <key>p25_tx_nyquist_filter_ff</key>
+  <name>P25 Frequency Demodulator</name>
+  <key>p25_freq_demod_cf</key>
   <category>[Thesis]/P25</category>
   <import>import p25</import>
-  <make>p25.tx_nyquist_filter_ff(
-    filter_gain=$filter_gain,
-    sample_rate=$sample_rate,
-    symbol_rate=$symbol_rate,
-    span=$span,
-    verbose=$verbose,
-    log=$log
+  <make>p25.freq_demod_cf(
+  sample_rate=$sample_rate,
+  max_amplitude=$max_amplitude,
+  max_deviation=$max_deviation,
+  gain_adjust=$gain_adjust,
+  verbose=$verbose,
+  log=$log
   )</make>
 
-  <callback></callback>
+  <callback>set_max_amplitude($max_amplitude)</callback>
+  <callback>set_max_deviation($max_deviation)</callback>
+  <callback>set_gain_adjust($gain_adjust)</callback>
 
-  <param>
-    <name>Gain</name>
-    <key>filter_gain</key>
-    <value>1.0</value>
-    <type>real</type>
-  </param>
   <param>
     <name>Sample Rate</name>
     <key>sample_rate</key>
     <value>48000</value>
     <type>int</type>
   </param>
+
   <param>
-    <name>Symbol Rate</name>
-    <key>symbol_rate</key>
-    <value>4800</value>
+    <name>Max Amplitude</name>
+    <key>max_amplitude</key>
+    <value>4.38895</value>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Max Deviation</name>
+    <key>max_deviation</key>
+    <value>2827</value>
     <type>int</type>
   </param>
+
   <param>
-    <name>Filter Symbol Span</name>
-    <key>span</key>
-    <value>11</value>
-    <type>int</type>
+    <name>Gain Adjustment</name>
+    <key>gain_adjust</key>
+    <value>1.0</value>
+    <type>float</type>
   </param>
+
   <param>
 		<name>Verbose</name>
 		<key>verbose</key>
@@ -73,7 +79,7 @@
 
   <sink>
     <name>in</name>
-    <type>float</type>
+    <type>complex</type>
   </sink>
 
   <source>

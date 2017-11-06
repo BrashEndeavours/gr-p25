@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <block>
-  <name>P25 TX Nyquist Filter</name>
-  <key>p25_tx_nyquist_filter_ff</key>
+  <name>P25 C4FM Modulator</name>
+  <key>p25_c4fm_modulator_bf</key>
   <category>[Thesis]/P25</category>
   <import>import p25</import>
-  <make>p25.tx_nyquist_filter_ff(
+  <make>p25.c4fm_modulator_bf(
     filter_gain=$filter_gain,
+    dibit_map=$dibit_map,
     sample_rate=$sample_rate,
     symbol_rate=$symbol_rate,
     span=$span,
@@ -13,32 +14,41 @@
     log=$log
   )</make>
 
-  <callback></callback>
-
-  <param>
-    <name>Gain</name>
-    <key>filter_gain</key>
-    <value>1.0</value>
-    <type>real</type>
-  </param>
   <param>
     <name>Sample Rate</name>
     <key>sample_rate</key>
     <value>48000</value>
     <type>int</type>
   </param>
+
   <param>
     <name>Symbol Rate</name>
     <key>symbol_rate</key>
     <value>4800</value>
     <type>int</type>
   </param>
+
+  <param>
+    <name>Dibit Mapping</name>
+    <key>dibit_map</key>
+    <value>[1.0/3.0, 1.0, -(1.0/3.0), -1.0]</value>
+    <type>real_vector</type>
+  </param>
+
+  <param>
+    <name>Filter Gain</name>
+    <key>filter_gain</key>
+    <value>1.0</value>
+    <type>real</type>
+  </param>
+
   <param>
     <name>Filter Symbol Span</name>
     <key>span</key>
     <value>11</value>
     <type>int</type>
   </param>
+
   <param>
 		<name>Verbose</name>
 		<key>verbose</key>
@@ -73,7 +83,7 @@
 
   <sink>
     <name>in</name>
-    <type>float</type>
+    <type>byte</type>
   </sink>
 
   <source>

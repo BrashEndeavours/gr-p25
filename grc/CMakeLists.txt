@@ -22,5 +22,10 @@ install(FILES
     p25_rx_shaping_filter_ff.xml
     p25_tx_shaping_filter_ff.xml
     p25_rx_nyquist_filter_ff.xml
-    p25_tx_nyquist_filter_ff.xml DESTINATION share/gnuradio/grc/blocks
+    p25_tx_nyquist_filter_ff.xml
+    p25_freq_mod_fc.xml
+    p25_freq_demod_cf.xml
+    p25_c4fm_modulator_bf.xml
+    p25_c4fm_demodulator_fb.xml
+    p25_c4fm_demodulator_fixed_fb.xml DESTINATION share/gnuradio/grc/blocks
 )

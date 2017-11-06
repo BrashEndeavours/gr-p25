@@ -36,7 +36,12 @@ GR_PYTHON_INSTALL(
     rx_shaping_filter_ff.py
     tx_shaping_filter_ff.py
     rx_nyquist_filter_ff.py
-    tx_nyquist_filter_ff.py DESTINATION ${GR_PYTHON_DIR}/p25
+    tx_nyquist_filter_ff.py
+    freq_mod_fc.py
+    freq_demod_cf.py
+    c4fm_modulator_bf.py
+    c4fm_demodulator_fb.py
+    c4fm_demodulator_fixed_fb.py DESTINATION ${GR_PYTHON_DIR}/p25
 )
 
 ########################################################################
@@ -51,3 +56,8 @@ GR_ADD_TEST(qa_rx_shaping_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_
 GR_ADD_TEST(qa_tx_shaping_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_tx_shaping_filter_ff.py)
 GR_ADD_TEST(qa_rx_nyquist_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_rx_nyquist_filter_ff.py)
 GR_ADD_TEST(qa_tx_nyquist_filter_ff ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_tx_nyquist_filter_ff.py)
+GR_ADD_TEST(qa_freq_mod_fc ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_freq_mod_fc.py)
+GR_ADD_TEST(qa_freq_demod_cf ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_freq_demod_cf.py)
+GR_ADD_TEST(qa_c4fm_modulator_bf ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_c4fm_modulator_bf.py)
+GR_ADD_TEST(qa_c4fm_demodulator_fb ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_c4fm_demodulator_fb.py)
+GR_ADD_TEST(qa_c4fm_demodulator_fixed_fb ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_c4fm_demodulator_fixed_fb.py)

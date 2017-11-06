@@ -1,44 +1,71 @@
 <?xml version="1.0"?>
 <block>
-  <name>P25 TX Nyquist Filter</name>
-  <key>p25_tx_nyquist_filter_ff</key>
+  <name>P25 C4FM Demodulator (Fixed)</name>
+  <key>p25_c4fm_demodulator_fixed_fb</key>
   <category>[Thesis]/P25</category>
   <import>import p25</import>
-  <make>p25.tx_nyquist_filter_ff(
+  <make>p25.c4fm_demodulator_fixed_fb(
     filter_gain=$filter_gain,
+    dibits=$dibits,
     sample_rate=$sample_rate,
     symbol_rate=$symbol_rate,
+    delay=$delay,
     span=$span,
     verbose=$verbose,
     log=$log
   )</make>
 
-  <callback></callback>
+  <callback>set_delay($delay)</callback>
 
   <param>
-    <name>Gain</name>
+    <name>Filter Gain</name>
     <key>filter_gain</key>
     <value>1.0</value>
     <type>real</type>
   </param>
-  <param>
-    <name>Sample Rate</name>
-    <key>sample_rate</key>
-    <value>48000</value>
-    <type>int</type>
-  </param>
-  <param>
-    <name>Symbol Rate</name>
-    <key>symbol_rate</key>
-    <value>4800</value>
-    <type>int</type>
-  </param>
+
   <param>
     <name>Filter Symbol Span</name>
     <key>span</key>
     <value>11</value>
     <type>int</type>
   </param>
+
+  <param>
+    <name>Sample Rate</name>
+    <key>sample_rate</key>
+    <value>48000</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Symbol Rate</name>
+    <key>symbol_rate</key>
+    <value>4800</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Delay</name>
+    <key>delay</key>
+    <value>0</value>
+    <type>int</type>
+  </param>
+
+  <param>
+    <name>Slice Levels</name>
+    <key>slice_levels</key>
+    <value>[-2, 0, 2]</value>
+    <type>real_vector</type>
+  </param>
+
+  <param>
+    <name>Dibits</name>
+    <key>dibits</key>
+    <value>[3, 2, 0, 1]</value>
+    <type>int_vector</type>
+  </param>
+
   <param>
 		<name>Verbose</name>
 		<key>verbose</key>
@@ -78,6 +105,6 @@
 
   <source>
     <name>out</name>
-    <type>float</type>
+    <type>byte</type>
   </source>
 </block>

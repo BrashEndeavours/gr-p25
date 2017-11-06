@@ -107,7 +107,7 @@ class generate_taps(object):
 			print "Gain: ", gain
 			print "Coeffs: ", coeffs
 			print "Coeffs * Gain: ", coeffs * gain
-		return coeffs * gain / sum(coeffs)
+		return coeffs * gain  / sum(coeffs)
 		
 
 	def generate_code(self, varname='taps'):
